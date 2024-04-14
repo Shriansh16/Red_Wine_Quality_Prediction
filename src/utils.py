@@ -25,10 +25,10 @@ def open_object(path):
         logging.info("ERROR OCCURED IN LOADING THE OBJECT")
         raise CustomException(e,sys)
     
-def evaluate_models(models,X_train,X_test,y_train,y_test)
+def evaluate_models(models,X_train,X_test,y_train,y_test):
     try:
         report={}
-        for i in len(models):
+        for i in range(len(models)):
             model=list(models.values())[i]
             model.fit(X_train,y_train)
             predictions=model.predict(X_test)

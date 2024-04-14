@@ -1,0 +1,2 @@
+[ 2024-04-14 12:54:13,248 ] 37 root - INFO - model report {'Logistic_regression': 0.740625, 'knn_c': 0.70625, 'random_forest_classifier': 0.778125, 'svc': 0.771875, 'gradient_boosting_classifier': 0.7625, 'ada_boost_classifier': 0.74375, 'decision_tree_classifier': 0.73125}
+[ 2024-04-14 12:54:13,248 ] 40 root - INFO - best model is random_forest_classifier with accuracy 0.778125

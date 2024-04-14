@@ -1,0 +1,2 @@
+[ 2024-04-14 12:52:06,709 ] 37 root - INFO - model report {'Logistic_regression': 0.740625, 'knn_c': 0.70625, 'random_forest_classifier': 0.79375, 'svc': 0.771875, 'gradient_boosting_classifier': 0.7625, 'ada_boost_classifier': 0.74375, 'decision_tree_classifier': 0.728125}
+[ 2024-04-14 12:52:06,710 ] 45 root - INFO - Exception occured at Model Training

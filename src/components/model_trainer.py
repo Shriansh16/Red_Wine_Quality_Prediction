@@ -36,7 +36,7 @@ class Model_Trainer:
             report=evaluate_models(models,X_train,X_test,y_train,y_test)
             logging.info(f"model report {report}")
             best_score=max(list(report.values()))
-            model_name=list(report.keys())[list(models.values()).index(best_score)]
+            model_name=list(report.keys())[list(report.values()).index(best_score)]
             logging.info(f"best model is {model_name} with accuracy {report[model_name]}")
             final_model=models[model_name]
             final_model.fit(X_train,y_train)

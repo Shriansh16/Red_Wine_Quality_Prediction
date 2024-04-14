@@ -24,7 +24,7 @@ class DataTransformation:
             num_columns=['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
             'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
              'pH', 'sulphates', 'alcohol']
-            preprocessor=ColumnTransformer(['num_transformer',StandardScaler(),num_columns])
+            preprocessor=ColumnTransformer([('num_transformer',StandardScaler(),num_columns)])
             return preprocessor
         except Exception as e:
             logging.info("ERROR OCCURED IN PREPROCESSOR STEP 1")
@@ -40,8 +40,6 @@ class DataTransformation:
             pre=self.get_data_transformation()
             X_train_trans=pre.fit_transform(X_train)
             X_test_trans=pre.transform(X_test)
-            X_train_trans=X_train_trans.toarray()
-            X_test_trans=X_test_trans.toarray()
             final_train=np.c_[X_train_trans,np.array(y_train)]
             final_test=np.c_[X_test_trans,np.array(y_test)]
             save_object(pre,self.data_transforamtion_config.preprocessor_path)
