@@ -22,6 +22,8 @@ class DataIngestion:
                 df=pd.read_csv('experiments\cleaned_data.csv')
                 os.makedirs(os.path.dirname(self.data_ingestion_config.train_data),exist_ok=True)
                 train_dataset,test_dataset=train_test_split(df,test_size=0.20,random_state=42)
+                train_dataset.reset_index(drop=True,inplace=True)
+                test_dataset.reset_index(drop=True,inplace=True)
                 train_dataset.to_csv(self.data_ingestion_config.train_data)
                 test_dataset.to_csv(self.data_ingestion_config.test_data)
                 df.to_csv(self.data_ingestion_config.raw_data)
