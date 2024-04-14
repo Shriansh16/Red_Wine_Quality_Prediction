@@ -27,13 +27,14 @@ class DataIngestion:
                 train_dataset.to_csv(self.data_ingestion_config.train_data)
                 test_dataset.to_csv(self.data_ingestion_config.test_data)
                 df.to_csv(self.data_ingestion_config.raw_data)
+                return (self.data_ingestion_config.train_data,self.data_ingestion_config.test_data)
             except Exception as e:
                 logging.info("ERROR OCCURED IN DATA INGESTION")
                 raise CustomException(e,sys)
                  
-if __name__ == '__main__':
+'''if __name__ == '__main__':
     obj = DataIngestion()
-    obj.initiate_data_ingestion()     
+    obj.initiate_data_ingestion()'''     
 
 '''So, the code inside the if __name__ == '__main__': block will only execute if the script is run directly.
  If the script is imported as a module, this block will not execute.'''  

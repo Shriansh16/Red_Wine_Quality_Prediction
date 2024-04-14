@@ -31,3 +31,24 @@ class DataTransformation:
             raise CustomException(e,sys)
     def initiate_data_transforamtion(self,train_path,test_path):
         try:
+            train_data=pd.read_csv(train_path)
+            test_data=pd.read_csv(test_path)
+            X_train=train_data.iloc[:,:-1]
+            y_train=train_data.iloc[:,-1]
+            X_test=test_data.iloc[:,:-1]
+            y_test=test_data.iloc[:,-1]
+            pre=self.get_data_transformation()
+            X_train_trans=pre.fit_transform(X_train)
+            X_test_trans=pre.transform(X_test)
+            X_train_trans=X_train_trans.toarray()
+            X_test_trans=X_test_trans.toarray()
+            final_train=np.c_[X_train_trans,np.array(y_train)]
+            final_test=np.c_[X_test_trans,np.array(y_test)]
+            save_object(pre,self.data_transforamtion_config.preprocessor_path)
+            return (final_train,final_test)
+        except Exception as e:
+            logging.info("ERROR OCCURED IN DATA TRANSFORMATION STEP 2")
+            raise CustomException(e,sys)
+        
+
+
