@@ -4,6 +4,7 @@ import sys
 from logger import *
 from exception import *
 import pickle
+from sklearn.metrics import accuracy_score
 
 
 
@@ -23,3 +24,18 @@ def open_object(path):
     except Exception as e:
         logging.info("ERROR OCCURED IN LOADING THE OBJECT")
         raise CustomException(e,sys)
+    
+def evaluate_models(models,X_train,X_test,y_train,y_test)
+    try:
+        report={}
+        for i in len(models):
+            model=list(models.values())[i]
+            model.fit(X_train,y_train)
+            predictions=model.predict(X_test)
+            score=accuracy_score(y_test,predictions)
+            report[list(models.keys())[i]]=score
+        return report
+    except Exception as e:
+        logging.info("ERROR OCCURED DURING MODEL EVALUATION")
+        raise CustomException(e,sys)
+

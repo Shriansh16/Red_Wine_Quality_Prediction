@@ -5,6 +5,7 @@ import sys
 sys.path.insert(0,'D:\Red_Wine_Quality_Prediction\src')
 from logger import *
 from exception import *
+from utils import *
 from dataclasses import dataclass
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
@@ -32,3 +33,14 @@ class Model_Trainer:
                 'svc':SVC(),'gradient_boosting_classifier':GradientBoostingClassifier(),
                 'ada_boost_classifier':AdaBoostClassifier(),'decision_tree_classifier':DecisionTreeClassifier()
             }
+            report=evaluate_models(models,X_train,X_test,y_train,y_test)
+            logging.info(f"model report {report}")
+            best_score=max(list(report.values()))
+            model_name=list(report.keys())[list(models.values()).index(best_score)]
+            logging.info(f"best model is {model_name} with accuracy {report[model_name]}")
+            final_model=models[model_name]
+            final_model.fit(X_train,y_train)
+            save_object(final_model,self.model_trainer_config.model_path)
+        except Exception as e:
+            logging.info('Exception occured at Model Training')
+            raise CustomException(e,sys)
